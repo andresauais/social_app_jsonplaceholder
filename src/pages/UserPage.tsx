@@ -7,6 +7,7 @@ import { User } from '../models/User';
 import { Photo } from '../models/Photo';
 import { Album } from '../models/Album';
 import AlbumCard from '../components/AlbumCard';
+import UserTodos from '../components/UserTodos';
 
 const UserPage = () => {
   const { id } = useParams();
@@ -46,6 +47,7 @@ const UserPage = () => {
         {albums?.map((album) => (
           <AlbumCard key={album.id} album={album} fetchThumbnail={fetchThumbnail} />
         ))}
+        <UserTodos userId={Number(id)} />
       </div>
     </div>
   );
