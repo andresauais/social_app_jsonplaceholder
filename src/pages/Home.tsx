@@ -17,7 +17,7 @@ const Home = () => {
     <div className="container mt-4">
       <h1>Listado de usuarios</h1>
       <ul className="list-group mt-3">
-        {users.map((user: any) => (
+        {users?.map((user: any) => (
           <li key={user.id} className="list-group-item">
             <Link to={`/users/${user.id}`}>{user.name}</Link>
           </li>
