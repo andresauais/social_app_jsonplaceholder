@@ -11,7 +11,6 @@ Aplicación frontend construida con **Vite + React + TypeScript**, que consume l
 - Gestión de datos con React Query
 - Tests unitarios y de integración con Vitest
 - Dockerizado para despliegue sencillo
-- CI/CD con GitHub Actions
 
 ## 📦 Instalación local
 ```bash
