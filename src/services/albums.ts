@@ -1,4 +1,4 @@
-import { Album } from '../models/album';
+import { Album } from '../models/Album';
 import { api } from './api';
 
 // Obtener álbumes por ID de usuario
