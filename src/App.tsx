@@ -1,11 +1,26 @@
-import { Button } from 'react-bootstrap';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import UserPage from './pages/UserPage';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 function App() {
   return (
-    <div className="container mt-5">
-      <h1 className="mb-3">Social App con Bootstrap</h1>
-      <Button variant="primary">Bootstrap funciona 🎉</Button>
-    </div>
+    <>
+      <Navbar bg="dark" data-bs-theme="dark">
+        <Container>
+          <Navbar.Brand as={Link} to="/">Social App</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/users/1">User 1</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users/:id" element={<UserPage />} />
+      </Routes>
+    </>
   );
 }
 
