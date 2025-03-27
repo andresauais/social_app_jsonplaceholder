@@ -1,13 +1,14 @@
 import { api } from './api';
+import { User } from '../models/User';
 
-// Obtener la lista completa de usuarios
-export const fetchUsers = async () => {
-  const { data } = await api.get('/users');
+// Obtener la lista de usuarios
+export const fetchUsers = async (): Promise<User[]> => {
+  const { data } = await api.get<User[]>('/users');
   return data;
 };
 
-// Obtener un solo usuario por su ID
-export const fetchUserById = async (id: string | number) => {
-  const { data } = await api.get(`/users/${id}`);
+// Obtener un usuario por ID
+export const fetchUserById = async (id: string | number): Promise<User> => {
+  const { data } = await api.get<User>(`/users/${id}`);
   return data;
 };
