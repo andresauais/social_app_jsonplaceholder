@@ -8,7 +8,7 @@ const Album = () => {
   const albumId = Number(id);
   const { album, photos, isLoading } = useAlbum(albumId);
 
-  // ✅ Guardar en localStorage como álbum recientemente visitado
+  // Guardar en localStorage como álbum recientemente visitado
   useEffect(() => {
     if (album) {
       const stored = localStorage.getItem('recentAlbums');
@@ -33,8 +33,6 @@ const Album = () => {
   return (
     <div className="container mt-5">
       <h1>Álbum {albumId}</h1>
-
-      {/* resto del contenido */}
       {isLoading ? (
         <p>Cargando fotos...</p>
       ) : (

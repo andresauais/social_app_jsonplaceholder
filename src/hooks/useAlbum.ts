@@ -6,8 +6,7 @@ import { Photo } from '../models/Photo';
 export const useAlbum = (albumId: number) => {
   const {
     data: album,
-    isLoading: isLoadingAlbum,
-    error: albumError,
+    isLoading: isLoadingAlbum
   } = useQuery<Album>({
     queryKey: ['album', albumId],
     queryFn: () => fetchAlbumById(albumId),
@@ -15,8 +14,7 @@ export const useAlbum = (albumId: number) => {
 
   const {
     data: photos,
-    isLoading: isLoadingPhotos,
-    error: photosError,
+    isLoading: isLoadingPhotos
   } = useQuery<Photo[]>({
     queryKey: ['photos', albumId],
     queryFn: () => fetchPhotosByAlbumId(albumId),
@@ -25,7 +23,6 @@ export const useAlbum = (albumId: number) => {
   return {
     album,
     photos,
-    isLoading: isLoadingAlbum || isLoadingPhotos,
-    error: albumError || photosError,
+    isLoading: isLoadingAlbum || isLoadingPhotos
   };
 };
