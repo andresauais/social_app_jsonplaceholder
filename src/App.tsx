@@ -2,6 +2,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import UserPage from './pages/UserPage';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import Album from './pages/AlbumPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/users/:id" element={<UserPage />} />
+        <Route path="/albums/:id" element={<Album />} />
       </Routes>
     </>
   );
