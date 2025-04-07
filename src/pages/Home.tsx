@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { fetchUsers } from '../services/users';
+import { useRecentAlbums } from '../hooks/useRecentAlbums';
 
 const Home = () => {
   const { data: users, isLoading, error } = useQuery({
     queryKey: ['users'], // Clave única para identificar esta consulta
     queryFn: fetchUsers,
   });
+
+  const recentAlbums = useRecentAlbums();
 
 	// Si la petición está cargando, muestra un mensaje de carga.
   if (isLoading) return <div className="container mt-4">Cargando usuarios...</div>;
@@ -23,6 +26,20 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      {recentAlbums.length > 0 && (
+        <div className="mt-5">
+          <h3>Recién visitados:</h3>
+          <ul className="list-group">
+            {recentAlbums.map((album) => (
+              <li key={album.id} className="list-group-item">
+                <Link to={`/albums/${album.id}`}>
+                  Álbum {album.id}: “{album.title}”
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
