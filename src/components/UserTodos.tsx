@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTodos } from '../hooks/useTodos';
 
 interface UserTodosProps {
@@ -15,14 +16,26 @@ const UserTodos = ({ userId }: UserTodosProps) => {
     handleDeleteTodo,
   } = useTodos(userId);
 
+  const [searchTerm, setSearchTerm] = useState('');
+
   if (isLoading) return <div>Cargando TODOs...</div>;
+
+  const filteredTodos = todos?.filter(todo =>
+    todo.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );  
 
   return (
     <div className="mt-5">
       <h3>TODOs del usuario</h3>
-
+      <input
+        type="text"
+        placeholder="Buscar TODOs..."
+        className="form-control mb-3"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <ul className="list-group">
-        {todos?.map((todo) => (
+        {filteredTodos?.map((todo) => (
           <li
             key={todo.id}
             className={`list-group-item d-flex justify-content-between align-items-center ${
